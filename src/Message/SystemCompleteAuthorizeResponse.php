@@ -15,6 +15,7 @@ class SystemCompleteAuthorizeResponse extends AbstractResponse
     {
         $this->request = $request;
         $signed_data_keys = array(
+            'M',
             'Mt',
             'Id',
             'Ref',
@@ -166,7 +167,7 @@ class SystemCompleteAuthorizeResponse extends AbstractResponse
 
     public function getAmount()
     {
-        return $this->getParameter('amount');
+        return isset($this->data['M']) ? ($this->data['M']/100) : 0;
     }
 
     public function setIdentifiant($value)
